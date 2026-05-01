@@ -707,7 +707,8 @@ animations = [{
 [node name="CameraView" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(927, 262)
+position = Vector2(945.5, 239.5)
+scale = Vector2(0.849594, 0.817073)
 sprite_frames = SubResource("SpriteFrames_gcf3q")
 animation = &"new_animation"
 script = ExtResource("2_wogd8")
@@ -725,8 +726,10 @@ script = ExtResource("1_5area")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -649.0
-offset_bottom = -649.0
+offset_left = -8.0
+offset_top = -1029.0
+offset_right = -8.0
+offset_bottom = -1029.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true

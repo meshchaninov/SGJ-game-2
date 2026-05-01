@@ -5,9 +5,11 @@
 
 [node name="PlayerScene" type="Node2D"]
 
-[node name="Editor" parent="." instance=ExtResource("1_f302p")]
+[node name="CanvasLayerEditor" type="CanvasLayer" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Editor" parent="CanvasLayerEditor" instance=ExtResource("1_f302p")]
+
+[node name="CanvasLayerMenu" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="Menu" parent="CanvasLayer" instance=ExtResource("2_vdp4a")]
+[node name="Menu" parent="CanvasLayerMenu" instance=ExtResource("2_vdp4a")]

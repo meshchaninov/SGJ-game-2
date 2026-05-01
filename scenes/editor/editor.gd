@@ -1,3 +1,5 @@
 extends Node2D
 
-@export var globalScene: GlobalScene
+
+#func _ready() -> void:
+	# $EditorRow_1.max_index = globalScene.max_parts[0]

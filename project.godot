@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="BOB"
+run/main_scene="uid://d14jh5yxhbv0b"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalStateScene="*res://scenes/globalScene.tscn"
 
 [display]
 

@@ -16,10 +16,10 @@ static var PARTS = {
 }
 
 # здесь показываются части, которые доступны будут при максимальной прокачке
-var PARTS_1 = [PARTS['EYE_1'], PARTS['EYE_2']]
+static var PARTS_1: Array[String] = [PARTS['EYE_1'], PARTS['EYE_2']]
 
-var PARTS_PER_ROW = {
-	1: PARTS_1
+static var PARTS_PER_ROW = {
+	0: PARTS_1
 }
 
 func set_true_blob_state(newState: Array) -> void:

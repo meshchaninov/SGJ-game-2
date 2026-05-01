@@ -6,4 +6,5 @@
 [node name="GlobalScene" type="Node2D"]
 script = ExtResource("1_c73m8")
 
-[node name="Editor" parent="." instance=ExtResource("2_010co")]
+[node name="Editor" parent="." node_paths=PackedStringArray("globalScene") instance=ExtResource("2_010co")]
+globalScene = NodePath("..")

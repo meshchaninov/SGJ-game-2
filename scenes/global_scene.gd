@@ -1,4 +1,5 @@
 extends Node2D
+class_name GlobalScene
 
 
 var current_blob_state = [1, 2, 3, 4, 5]

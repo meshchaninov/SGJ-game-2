@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnp7aos8j82mg"]
+[gd_scene load_steps=3 format=3 uid="uid://dnp7aos8j82mg"]
 
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
+[ext_resource type="PackedScene" uid="uid://ccuol7mv1bi6v" path="res://scenes/Menu/Menu.tscn" id="2_vdp4a"]
 
 [node name="PlayerScene" type="Node2D"]
 
 [node name="Editor" parent="." instance=ExtResource("1_f302p")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("2_vdp4a")]

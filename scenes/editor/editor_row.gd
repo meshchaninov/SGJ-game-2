@@ -31,6 +31,7 @@ func getTexture(str: String) -> Texture2D:
 	return texture
 
 func _on_click(is_left: bool) -> void:
+	print('ON CLICK')
 	var current = get_current_index()
 	var max = get_max_index()
 	var next_index: int

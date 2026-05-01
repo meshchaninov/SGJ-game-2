@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvwvtoyxl2fey"]
+
+[ext_resource type="Texture2D" uid="uid://d08k1xo6wcawg" path="res://assets/pics/blob/blob body.png" id="1_bc6i7"]
+
+[node name="Editor" type="Node2D"]
+
+[node name="BlobBody" type="Sprite2D" parent="."]
+position = Vector2(640, 500)
+texture = ExtResource("1_bc6i7")

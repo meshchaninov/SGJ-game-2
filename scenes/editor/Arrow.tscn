@@ -1,23 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5jscgtpbl1u8"]
+[gd_scene load_steps=6 format=3 uid="uid://b5jscgtpbl1u8"]
 
 [ext_resource type="Script" uid="uid://whnqrw008rpy" path="res://scenes/editor/arrow.gd" id="1_jieal"]
 [ext_resource type="Texture2D" uid="uid://c151g7mabnaqj" path="res://assets/pics/ui/arrow/main.png" id="2_jieal"]
+[ext_resource type="PackedScene" uid="uid://cn26hwyaddm4b" path="res://scenes/ui/button.tscn" id="2_xxbpw"]
+[ext_resource type="Texture2D" uid="uid://cl30b2jirgo4f" path="res://assets/pics/ui/arrow/click.png" id="4_jh2yt"]
+[ext_resource type="Texture2D" uid="uid://1pkr2tut6emr" path="res://assets/pics/ui/arrow/hover.png" id="5_ewkxu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jieal"]
-size = Vector2(54, 54)
-
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="Node2D"]
 script = ExtResource("1_jieal")
 
-[node name="Arrow" type="Sprite2D" parent="."]
-scale = Vector2(0.186207, 0.186207)
-texture = ExtResource("2_jieal")
-centered = false
+[node name="Button" parent="." instance=ExtResource("2_xxbpw")]
+mainTexture = ExtResource("2_jieal")
+clickTexture = ExtResource("4_jh2yt")
+hoverTexture = ExtResource("5_ewkxu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(27, 27)
-shape = SubResource("RectangleShape2D_jieal")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="click" from="Button" to="." method="_on_button_click"]

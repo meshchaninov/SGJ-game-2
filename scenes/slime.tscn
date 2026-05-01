@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://br604r1peqonv" path="res://scripts/slime/soft_body_simple.gd" id="1_soft"]
+
+[node name="Slime" type="Node2D"]
+script = ExtResource("1_soft")
+point_count = 12
+radius = 50.0
+stiffness = 600.0
+damping = 8.0
+visual_color = Color(0.3, 0.85, 0.3, 1.0)
+move_speed = 250.0
+jump_force = 450.0
+gravity = 800.0
+ground_friction = 0.85
+debug = false

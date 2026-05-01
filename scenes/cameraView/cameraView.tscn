@@ -1,6 +1,6 @@
 [gd_scene load_steps=105 format=3 uid="uid://c4skm6x0vdrio"]
 
-[ext_resource type="Script" uid="uid://s7xxe373qflc" path="res://scenes/cameraView/Menu.gd" id="1_5area"]
+[ext_resource type="Script" path="res://scenes/cameraView/Menu.gd" id="1_5area"]
 [ext_resource type="Texture2D" uid="uid://b5kwpoowsa3xl" path="res://assets/spritesheets/test-another-victory.png" id="1_wogd8"]
 [ext_resource type="Texture2D" uid="uid://uyw2fkq3olyd" path="res://assets/spritesheets/another-victory_vhs_spritesheet.png" id="2_fs7ng"]
 [ext_resource type="Script" uid="uid://4mp73h54tn4d" path="res://scenes/cameraView/animated_sprite_2d.gd" id="2_wogd8"]

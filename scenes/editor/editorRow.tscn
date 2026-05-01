@@ -1,37 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2r7ui6f7jrwc"]
+[gd_scene load_steps=3 format=3 uid="uid://c2r7ui6f7jrwc"]
 
 [ext_resource type="Script" uid="uid://b4e7vw5fq2dtg" path="res://scenes/editor/editor_row.gd" id="1_s4m58"]
-[ext_resource type="Texture2D" uid="uid://bcjwlu8g4kl33" path="res://assets/pics/arrow.png" id="2_8qj2o"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k56gi"]
-size = Vector2(74, 54)
+[ext_resource type="PackedScene" uid="uid://b5jscgtpbl1u8" path="res://scenes/editor/Arrow.tscn" id="2_k56gi"]
 
 [node name="EditorRow" type="Node2D"]
 script = ExtResource("1_s4m58")
 
-[node name="buttonLeft" type="Area2D" parent="."]
+[node name="Arrow" parent="." node_paths=PackedStringArray("editorRow") instance=ExtResource("2_k56gi")]
+editorRow = NodePath("..")
+is_left = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="buttonLeft"]
-position = Vector2(38, 27)
-shape = SubResource("RectangleShape2D_k56gi")
+[node name="Arrow2" parent="." node_paths=PackedStringArray("editorRow") instance=ExtResource("2_k56gi")]
+position = Vector2(166, 0)
+editorRow = NodePath("..")
 
-[node name="Arrow" type="Sprite2D" parent="buttonLeft/CollisionShape2D"]
-position = Vector2(-38, -27)
-texture = ExtResource("2_8qj2o")
-centered = false
-
-[node name="buttonRight" type="Area2D" parent="."]
-position = Vector2(497, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="buttonRight"]
-position = Vector2(38, 27)
-shape = SubResource("RectangleShape2D_k56gi")
-
-[node name="Arrow" type="Sprite2D" parent="buttonRight/CollisionShape2D"]
-position = Vector2(-38, -27)
-texture = ExtResource("2_8qj2o")
-centered = false
-flip_h = true
-
-[connection signal="input_event" from="buttonLeft" to="." method="_on_button_left_input_event"]
-[connection signal="input_event" from="buttonRight" to="." method="_on_button_right_input_event"]
+[connection signal="click" from="." to="." method="_on_click"]

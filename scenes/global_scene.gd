@@ -8,13 +8,18 @@ var true_blob_state = [1, 1, 1, null, null]
 # если -1 то часть недоступна
 var max_parts = [1, -1, -1 ,-1 ,-1]
 
-var PARTS = {
+# тут прост для удобство адреса всех пикч
+static var PARTS = {
 	'EYE_1': "res://assets/pics/blob/parts/eye/1.png",
 	'EYE_2': "res://assets/pics/blob/parts/eye/2.png"
 }
 
 # здесь показываются части, которые доступны будут при максимальной прокачке
 var PARTS_1 = [PARTS['EYE_1'], PARTS['EYE_2']]
+
+var PARTS_PER_ROW = {
+	1: PARTS_1
+}
 
 func set_true_blob_state(newState: Array) -> void:
 	true_blob_state = newState

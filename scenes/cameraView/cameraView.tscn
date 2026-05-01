@@ -1,9 +1,10 @@
-[gd_scene load_steps=104 format=3 uid="uid://c4skm6x0vdrio"]
+[gd_scene load_steps=105 format=3 uid="uid://c4skm6x0vdrio"]
 
 [ext_resource type="Script" uid="uid://s7xxe373qflc" path="res://scenes/cameraView/Menu.gd" id="1_5area"]
 [ext_resource type="Texture2D" uid="uid://b5kwpoowsa3xl" path="res://assets/spritesheets/test-another-victory.png" id="1_wogd8"]
 [ext_resource type="Texture2D" uid="uid://uyw2fkq3olyd" path="res://assets/spritesheets/another-victory_vhs_spritesheet.png" id="2_fs7ng"]
 [ext_resource type="Script" uid="uid://4mp73h54tn4d" path="res://scenes/cameraView/animated_sprite_2d.gd" id="2_wogd8"]
+[ext_resource type="Script" uid="uid://0opjwjngtd13" path="res://scenes/cameraView/progress_bar.gd" id="5_rhjfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ng"]
 atlas = ExtResource("1_wogd8")
@@ -707,7 +708,7 @@ animations = [{
 [node name="CameraView" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(945.5, 239.5)
+position = Vector2(974, 311)
 scale = Vector2(0.849594, 0.817073)
 sprite_frames = SubResource("SpriteFrames_gcf3q")
 animation = &"new_animation"
@@ -733,3 +734,32 @@ offset_bottom = -1029.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 838.0
+offset_top = 133.0
+offset_right = 1148.0
+offset_bottom = 173.0
+script = ExtResource("5_rhjfp")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 19.0
+offset_right = 303.0
+offset_bottom = 46.0
+show_percentage = false
+
+[node name="PercentLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -9.0
+offset_top = -33.0
+offset_right = -9.0
+offset_bottom = 7.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 1

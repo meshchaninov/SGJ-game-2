@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvwvtoyxl2fey"]
+[gd_scene load_steps=10 format=3 uid="uid://cvwvtoyxl2fey"]
 
 [ext_resource type="Script" uid="uid://dmok0ejktnhdf" path="res://scenes/editor/editor.gd" id="1_5cfe8"]
 [ext_resource type="PackedScene" uid="uid://c2r7ui6f7jrwc" path="res://scenes/editor/editorRow.tscn" id="1_m0is4"]
+[ext_resource type="Texture2D" uid="uid://cmjbbsdmhnbqr" path="res://assets/pics/mars.png" id="2_rolao"]
 [ext_resource type="Texture2D" uid="uid://bkrygbm7epy2g" path="res://assets/pics/blob/blob.png" id="3_7gtdv"]
 [ext_resource type="Texture2D" uid="uid://b2b6j7iqnm15r" path="res://assets/pics/blob/parts/head/0.png" id="4_5q5vg"]
 [ext_resource type="Texture2D" uid="uid://cqw6xe3g7jb6q" path="res://assets/pics/blob/parts/eye/0.png" id="5_rolao"]
@@ -12,8 +13,13 @@
 [node name="Editor" type="Node2D"]
 script = ExtResource("1_5cfe8")
 
+[node name="Mars" type="Sprite2D" parent="."]
+position = Vector2(284.293, 203.75)
+scale = Vector2(0.0699641, 0.0680833)
+texture = ExtResource("2_rolao")
+
 [node name="blobAndParts" type="Node2D" parent="."]
-position = Vector2(135, 30)
+position = Vector2(77, 9)
 scale = Vector2(0.7, 0.7)
 
 [node name="BlobBody" type="Sprite2D" parent="blobAndParts"]

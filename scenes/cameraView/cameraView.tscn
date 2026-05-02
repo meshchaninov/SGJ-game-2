@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bqw6qroru63sm" path="res://scenes/cameraView/clue.gd" id="6_iwm65"]
 [ext_resource type="Texture2D" uid="uid://1msynhp706xb" path="res://assets/pics/ui/clue_board.png" id="7_g7xkj"]
 [ext_resource type="Texture2D" uid="uid://co1jfdqtid3kp" path="res://assets/spritesheets/briffing_vhs_spritesheet.png" id="7_lhkdf"]
-[ext_resource type="Script" uid="uid://bc6q78g3bxej8" path="res://scenes/cameraView/attempt.gd" id="8_3qs62"]
+[ext_resource type="Script" path="res://scenes/cameraView/attempt.gd" id="8_3qs62"]
 [ext_resource type="Texture2D" uid="uid://6aqeeqt0heyv" path="res://assets/pics/ui/arrow/attempt_life.png" id="8_rutji"]
 [ext_resource type="Texture2D" uid="uid://qi5o1bwcu36r" path="res://assets/spritesheets/default_vhs_spritesheet.png" id="8_xe4wp"]
 [ext_resource type="Texture2D" uid="uid://dk5q70i6b5fj5" path="res://assets/spritesheets/defeat_vhs_spritesheet.png" id="9_2t6e6"]

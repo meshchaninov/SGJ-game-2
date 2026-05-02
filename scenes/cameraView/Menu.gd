@@ -18,6 +18,7 @@ func _ready() -> void:
 	if menu_music and game_music:
 		menu_music.stream = preload("res://assets/audio/menu.mp3")
 		game_music.stream = preload("res://assets/audio/game.mp3")
+		game_music.stream.loop
 		game_music.play()
 		print("Game music started")
 	else:

@@ -23,11 +23,8 @@ GlobalStateScene="*res://scenes/globalScene.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=1024
-window/size/resizable=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
-[input]
 
 [gui]
 

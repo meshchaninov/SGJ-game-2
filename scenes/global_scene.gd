@@ -172,24 +172,35 @@ static func generateNextClue():
 static var current_blob_state = [0, 0, 0, 0, 0]
 static var true_blob_state = [1, 1, 1, null, null]
 
+static func checkWinPercent():
+	var filteredTrueState = true_blob_state.filter(func(value):
+		return value != null)
+	var size = filteredTrueState.size()
+	
+	var index = 0
+	var successCount = current_blob_state.filter(func(value):
+		var success = value == true_blob_state[index]
+		index = index +1
+		return success)
+	return snapped(successCount / size, 0.01) * 100
+
 # Тут показывается элемент массива до которого мы имеем доступ в части
 # если -1 то часть недоступна
-static var max_parts = [1, -1, -1 ,-1 ,-1]
+# бля, ставим от 0 до 4 или -1, -- это доступные индексы
+static var max_parts = [4, 4, 4 , 4 , 4]
 
 # тут прост для удобство адреса всех пикч
-static var PARTS = {
-	'EYE_1': "res://assets/pics/blob/parts/eye/1.png",
-	'EYE_2': "res://assets/pics/blob/parts/eye/2.png"
-}
+#static var PARTS = {
+	#'EYE_1': "res://assets/pics/blob/parts/eye/1.png",
+	#'EYE_2': "res://assets/pics/blob/parts/eye/2.png"
+#}
 
 static var clue = [0, 1]
 
 # здесь показываются части, которые доступны будут при максимальной прокачке
-static var PARTS_1: Array[String] = [PARTS['EYE_1'], PARTS['EYE_2']]
+#static var PARTS_1: Array[String] = [PARTS['EYE_1'], PARTS['EYE_2']]
 
-static var PARTS_PER_ROW = {
-	0: PARTS_1
-}
+static var PARTS_PER_ROW = 5
 
 static func set_true_blob_state(newState: Array) -> void:
 	true_blob_state = newState

@@ -1,23 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvwvtoyxl2fey"]
+[gd_scene load_steps=9 format=3 uid="uid://cvwvtoyxl2fey"]
 
 [ext_resource type="Script" uid="uid://dmok0ejktnhdf" path="res://scenes/editor/editor.gd" id="1_5cfe8"]
-[ext_resource type="Texture2D" uid="uid://d08k1xo6wcawg" path="res://assets/pics/blob/blob body.png" id="1_bc6i7"]
 [ext_resource type="PackedScene" uid="uid://c2r7ui6f7jrwc" path="res://scenes/editor/editorRow.tscn" id="1_m0is4"]
-[ext_resource type="Texture2D" uid="uid://brri8dqt02b1m" path="res://assets/pics/blob/parts/eye/1.png" id="4_7gtdv"]
+[ext_resource type="Texture2D" uid="uid://bkrygbm7epy2g" path="res://assets/pics/blob/blob.png" id="3_7gtdv"]
+[ext_resource type="Texture2D" uid="uid://b2b6j7iqnm15r" path="res://assets/pics/blob/parts/head/0.png" id="4_5q5vg"]
+[ext_resource type="Texture2D" uid="uid://cqw6xe3g7jb6q" path="res://assets/pics/blob/parts/eye/0.png" id="5_rolao"]
+[ext_resource type="Texture2D" uid="uid://d2ris604nr0ty" path="res://assets/pics/blob/parts/mouth/0.png" id="6_p4u40"]
+[ext_resource type="Texture2D" uid="uid://c3nj25h1q5knp" path="res://assets/pics/blob/parts/cloth/0.png" id="7_syr16"]
+[ext_resource type="Texture2D" uid="uid://cs1putrptg6bi" path="res://assets/pics/blob/parts/hand/0.png" id="8_qnluh"]
 
 [node name="Editor" type="Node2D"]
 script = ExtResource("1_5cfe8")
 
-[node name="EditorRow_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
-sprite = NodePath("../BlobPart1")
+[node name="blobAndParts" type="Node2D" parent="."]
+position = Vector2(135, 30)
+scale = Vector2(0.7, 0.7)
 
-[node name="BlobBody" type="Sprite2D" parent="."]
+[node name="BlobBody" type="Sprite2D" parent="blobAndParts"]
 visibility_layer = 524288
-position = Vector2(275, 232)
-scale = Vector2(0.466667, 0.466667)
-texture = ExtResource("1_bc6i7")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_7gtdv")
+centered = false
 
-[node name="BlobPart1" type="Sprite2D" parent="."]
-position = Vector2(275, 232)
-scale = Vector2(0.467, 0.467)
-texture = ExtResource("4_7gtdv")
+[node name="Head" type="Sprite2D" parent="blobAndParts"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_5q5vg")
+centered = false
+
+[node name="Eye" type="Sprite2D" parent="blobAndParts"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_rolao")
+centered = false
+
+[node name="Mouth" type="Sprite2D" parent="blobAndParts"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_p4u40")
+centered = false
+
+[node name="Cloth" type="Sprite2D" parent="blobAndParts"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_syr16")
+centered = false
+
+[node name="Hand" type="Sprite2D" parent="blobAndParts"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_qnluh")
+centered = false
+
+[node name="EditorHead" parent="blobAndParts" node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
+position = Vector2(-78.5714, 0)
+scale = Vector2(1.42857, 1.42857)
+sprite = NodePath("../Head")
+
+[node name="EditorEye" parent="blobAndParts" node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
+position = Vector2(-78.571, 80)
+scale = Vector2(1.42857, 1.42857)
+part_index = 1
+sprite = NodePath("../Eye")
+
+[node name="EditorMouth" parent="blobAndParts" node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
+position = Vector2(-78.571, 159)
+scale = Vector2(1.42857, 1.42857)
+part_index = 2
+sprite = NodePath("../Mouth")
+
+[node name="EditorHands" parent="blobAndParts" node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
+position = Vector2(-78.571, 240)
+scale = Vector2(1.42857, 1.42857)
+part_index = 3
+sprite = NodePath("../Hand")
+
+[node name="EditorCloth" parent="blobAndParts" node_paths=PackedStringArray("sprite") instance=ExtResource("1_m0is4")]
+position = Vector2(-78.571, 320)
+scale = Vector2(1.42857, 1.42857)
+part_index = 4
+sprite = NodePath("../Cloth")

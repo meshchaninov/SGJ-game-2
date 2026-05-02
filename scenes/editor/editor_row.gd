@@ -6,19 +6,51 @@ class_name  EditorRow
 
 @export var part_index: int
 @export var sprite: Sprite2D
+@onready var scene = $"."
 
 signal click(is_left: bool)
 
+static var part_names = ['head', 'eye', 'mouth', 'hand', 'cloth']
 
-var paths_array: Array[String] 
+var paths_array: Array[String]
+var pathName: String
 
 func _ready() -> void:
-	paths_array = GlobalStateScene.PARTS_PER_ROW[part_index]
+	pathName = part_names[part_index]
+	refreshRow()
 	update_texture()
+	
+# Обнуляет и показывает/скрывает часть при обновлении true state
+func refreshRow():
+	var toHide = get_max_index() == -1
+	if(toHide):
+		GlobalScene.set_current_blob_state_part(0, part_index)
+	update_texture()
+	sprite.visible = !toHide
+	scene.visible = !toHide
+	
+	
 
 func update_texture():
-	var current = get_current_index()
-	sprite.texture = getTexture(paths_array[current])
+	if(get_max_index() == -1):
+		GlobalScene.set_current_blob_state_part(0, part_index)
+	var texture: Texture2D
+	var currentIndex  = get_current_index()
+	match pathName:
+		'head':
+			texture = GlobalScene.getPartHead(currentIndex)
+		'eye':
+			texture = GlobalScene.getPartEye(currentIndex)
+		'mouth':
+			texture = GlobalScene.getPartMouth(currentIndex)
+		'cloth':
+			texture = GlobalScene.getPartCloth(currentIndex)
+		'hand':
+			texture = GlobalScene.getPartHand(currentIndex)
+	print(pathName)
+	print(currentIndex)
+	print(texture)
+	sprite.texture = texture
 	
 func get_max_index() -> int: 
 	return GlobalStateScene.max_parts[part_index]
@@ -34,6 +66,8 @@ func _on_click(is_left: bool) -> void:
 	print('ON CLICK')
 	var current = get_current_index()
 	var max = get_max_index()
+	if(max == -1):
+		return
 	var next_index: int
 	var prev_index: int
 

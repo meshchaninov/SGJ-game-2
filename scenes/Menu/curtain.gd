@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name Curtain
 
-@onready var curtain: ColorRect = $ColorRect
+@onready var curtain: TextureRect = $ColorRect
 
 @export var defaultOpen = false
 
@@ -29,7 +29,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		toggle_curtain()
 		get_viewport().set_input_as_handled()
-		curtain.set
 
 func toggle_curtain() -> void:
 	if is_animating:

@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://hxantjs83tlu"]
+[gd_scene load_steps=8 format=3 uid="uid://hxantjs83tlu"]
 
 [ext_resource type="Texture2D" uid="uid://t1q8gugefdry" path="res://assets/pics/backMain.png" id="1_3lb1s"]
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
+[ext_resource type="Script" uid="uid://c5w0rqt5rgrvi" path="res://scenes/player_scene.gd" id="1_qxfha"]
 [ext_resource type="PackedScene" uid="uid://b7cvk11d4sarf" path="res://scenes/Menu/curtain.tscn" id="1_vdp4a"]
 [ext_resource type="Script" uid="uid://b2x6xd6ovd5o8" path="res://scenes/skip.gd" id="2_4kqly"]
 [ext_resource type="PackedScene" uid="uid://c4skm6x0vdrio" path="res://scenes/cameraView/cameraView.tscn" id="2_yxm6s"]
 [ext_resource type="Texture2D" uid="uid://bh8cb1ykk7s7h" path="res://assets/pics/window.png" id="5_b4xdg"]
 
 [node name="PlayerScene" type="Node2D"]
+script = ExtResource("1_qxfha")
 
 [node name="BackMain" type="Sprite2D" parent="."]
 position = Vector2(640, 511.5)

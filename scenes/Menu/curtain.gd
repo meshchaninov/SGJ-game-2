@@ -1,8 +1,8 @@
-extends Control
+extends CanvasLayer
+class_name Curtain
 
-@onready var curtain: ColorRect = $ViewLayer/ColorRect
-@onready var layerScene: CanvasLayer = $ViewLayer
-@export var layer = 2
+@onready var curtain: ColorRect = $ColorRect
+
 @export var defaultOpen = false
 
 var is_closed := false
@@ -18,7 +18,6 @@ func emit_toggle():
 	toggle.emit()
 
 func _ready() -> void:
-	layerScene.layer = layer
 	hidden_y = curtain.position.y
 	shown_y = 0.0
 	if(defaultOpen):
@@ -33,8 +32,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		curtain.set
 
 func toggle_curtain() -> void:
-	print('toggle')
-	print(is_animating, ' ', is_closed)
 	if is_animating:
 		return
 

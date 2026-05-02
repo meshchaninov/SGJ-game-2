@@ -10,7 +10,7 @@ extends Control
 
 var tween: Tween
 var clue_width := 240.0
-var current_clue_id := 1
+var current_clue_id := 4
 
 var closed_x := 0.0
 var peek_offset := 40.0

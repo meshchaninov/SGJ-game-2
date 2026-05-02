@@ -1,33 +1,141 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnp7aos8j82mg"]
+[gd_scene load_steps=4 format=3 uid="uid://dnp7aos8j82mg"]
 
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
 [ext_resource type="PackedScene" uid="uid://b7cvk11d4sarf" path="res://scenes/Menu/curtain.tscn" id="1_vdp4a"]
+[ext_resource type="Script" uid="uid://b2x6xd6ovd5o8" path="res://scenes/skip.gd" id="2_4kqly"]
 
 [node name="PlayerScene" type="Node2D"]
 
-[node name="Curtain" parent="." instance=ExtResource("1_vdp4a")]
-layer = 10
+[node name="MainMenu" parent="." instance=ExtResource("1_vdp4a")]
+layer = 30
 defaultOpen = true
 
-[node name="Button" type="Button" parent="Curtain/ViewLayer/ColorRect" index="0"]
+[node name="Play" type="TextureButton" parent="MainMenu/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -178.0
+offset_top = -48.5
+offset_right = 178.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MainMenu/ColorRect/Play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -40.0
+offset_right = 156.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Играть"
+
+[node name="Briefing" type="TextureButton" parent="MainMenu/ColorRect" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 116.0
+offset_right = 200.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MainMenu/ColorRect/Briefing"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.5
+offset_top = -40.0
+offset_right = 200.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Брифинг"
+
+[node name="Briefing" parent="." instance=ExtResource("1_vdp4a")]
+layer = 35
+defaultOpen = true
+
+[node name="Skip" type="TextureButton" parent="Briefing/ColorRect" index="0"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -102.0
-offset_top = -180.0
-offset_right = 101.0
-offset_bottom = -87.0
+offset_left = -299.5
+offset_top = -140.0
+offset_right = 299.5
 grow_horizontal = 2
 grow_vertical = 0
-text = "Close"
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("2_4kqly")
+
+[node name="Label" type="Label" parent="Briefing/ColorRect/Skip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -281.5
+offset_top = -40.0
+offset_right = 281.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Пропустить"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Briefing/ColorRect" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.3
+anchor_right = 0.975
+anchor_bottom = 0.844
+offset_right = 1.0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "Слушайте сюда, салага, это вам не Сколково и не Бостон Дайнемикс, мы тут делаем не роботов, мы создаём реальную жизнь, ваша Пандора и рядом не стоит! Тут крутятся серьёзные деньги, а значит нельзя допускать ошибок. Будете косячить – вылетите отсюда под трибунал, ровно как ваши идиоты-предшественники. 
+ Здесь, на Марсе, мы изучаем местных жителей, их культуру и технологии. И для этого вы будете создавать агентов, которые смогут внедриться в марсианские города. Самое сложное – замаскировать этих агентов под местных жителей. Поверьте, марсиане не будут церемониться с чужаками, а значит нужна качественная маскировка. Это и будет под вашей ответственностью. 
+ Отставить нытьё! Всё не так страшно. Наши разведчики периодически будут давать подсказки о жизни этих существ. Не обещаю, что подсказки будут понятны, но со временем вы осознаете их пользу. Также вам поможет наша система оценки сличения. Всё, разберётесь по ходу дела. Конец связи."
 
 [node name="CanvasLayerEditor" type="CanvasLayer" parent="."]
 
 [node name="Editor" parent="CanvasLayerEditor" instance=ExtResource("1_f302p")]
 
-[connection signal="pressed" from="Curtain/ViewLayer/ColorRect/Button" to="Curtain" method="emit_toggle"]
+[connection signal="pressed" from="MainMenu/ColorRect/Play" to="MainMenu" method="emit_toggle"]
+[connection signal="pressed" from="MainMenu/ColorRect/Briefing" to="Briefing" method="emit_toggle"]
+[connection signal="pressed" from="Briefing/ColorRect/Skip" to="Briefing/ColorRect/Skip" method="skip"]
 
-[editable path="Curtain"]
+[editable path="MainMenu"]
+[editable path="Briefing"]

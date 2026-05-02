@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BOB"
-run/main_scene="uid://dnp7aos8j82mg"
+run/main_scene="uid://hxantjs83tlu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,7 @@ GlobalStateScene="*res://scenes/globalScene.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=1024
+window/size/resizable=false
 
 [gui]
 

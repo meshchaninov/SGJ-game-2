@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnp7aos8j82mg"]
+[gd_scene load_steps=5 format=3 uid="uid://hxantjs83tlu"]
 
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
 [ext_resource type="PackedScene" uid="uid://b7cvk11d4sarf" path="res://scenes/Menu/curtain.tscn" id="1_vdp4a"]
-[ext_resource type="Script" uid="uid://b2x6xd6ovd5o8" path="res://scenes/skip.gd" id="2_4kqly"]
+[ext_resource type="Script" path="res://scenes/skip.gd" id="2_4kqly"]
+[ext_resource type="PackedScene" uid="uid://c4skm6x0vdrio" path="res://scenes/cameraView/cameraView.tscn" id="2_yxm6s"]
 
 [node name="PlayerScene" type="Node2D"]
 
@@ -132,6 +133,8 @@ text = "Слушайте сюда, салага, это вам не Сколко
 [node name="CanvasLayerEditor" type="CanvasLayer" parent="."]
 
 [node name="Editor" parent="CanvasLayerEditor" instance=ExtResource("1_f302p")]
+
+[node name="CameraView" parent="." instance=ExtResource("2_yxm6s")]
 
 [connection signal="pressed" from="MainMenu/ColorRect/Play" to="MainMenu" method="emit_toggle"]
 [connection signal="pressed" from="MainMenu/ColorRect/Briefing" to="Briefing" method="emit_toggle"]

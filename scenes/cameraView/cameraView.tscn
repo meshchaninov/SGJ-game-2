@@ -1,4 +1,4 @@
-[gd_scene load_steps=816 format=3 uid="uid://c4skm6x0vdrio"]
+[gd_scene load_steps=818 format=3 uid="uid://c4skm6x0vdrio"]
 
 [ext_resource type="Script" uid="uid://s7xxe373qflc" path="res://scenes/cameraView/Menu.gd" id="1_5area"]
 [ext_resource type="Texture2D" uid="uid://dokdajai218b8" path="res://assets/spritesheets/0_p_vhs_spritesheet.png" id="2_rutji"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://4ynsy88bp5bc" path="res://assets/pics/ui/check_button.png" id="22_xe4wp"]
 [ext_resource type="Texture2D" uid="uid://vw4jn8h7uofb" path="res://assets/pics/ui/check_button_press.png" id="23_2t6e6"]
 [ext_resource type="Texture2D" uid="uid://04a5vdyaduv" path="res://assets/pics/ui/check_button_hover.png" id="24_thpgb"]
+[ext_resource type="Script" uid="uid://4sjrsw3evir8" path="res://scenes/cameraView/camera_view.gd" id="25_camera"]
+[ext_resource type="Script" path="res://scenes/cameraView/check.gd" id="26_check"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a6f4"]
 atlas = ExtResource("2_rutji")
@@ -5629,6 +5631,7 @@ animations = [{
 }]
 
 [node name="CameraView" type="Node2D"]
+script = ExtResource("25_camera")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 script = ExtResource("2_wogd8")
@@ -5867,6 +5870,7 @@ offset_left = 794.0
 offset_top = 640.0
 offset_right = 1173.0
 offset_bottom = 707.0
+script = ExtResource("26_check")
 
 [node name="CheckButton" type="TextureButton" parent="Check"]
 layout_mode = 1

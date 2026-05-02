@@ -1,5 +1,7 @@
 extends Control
 
+signal toggle_pressed()
+
 @onready var board: Control = $Board
 @onready var toggle_handle: Control = $Board/ToggleHandle
 
@@ -91,6 +93,7 @@ func _on_handle_mouse_exited() -> void:
 
 func _on_handle_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		toggle_pressed.emit()
 		if is_open:
 			close_clue()
 		else:

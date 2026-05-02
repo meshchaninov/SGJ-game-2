@@ -1,6 +1,8 @@
 extends Node2D
 class_name GlobalScene
 
+static var lives = 10
+
 static var goodClueActions = [
 	'то на него плюют окружающие',
 	'то ему запрещено петь песни',
@@ -172,6 +174,7 @@ static func generateNextClue():
 static var current_blob_state = [0, 0, 0, 0, 0]
 static var true_blob_state = [1, 1, 1, null, null]
 
+
 static func checkWinPercent():
 	var filteredTrueState = true_blob_state.filter(func(value):
 		return value != null)
@@ -181,8 +184,8 @@ static func checkWinPercent():
 	var successCount = current_blob_state.filter(func(value):
 		var success = value == true_blob_state[index]
 		index = index +1
-		return success)
-	return snapped(successCount / size, 0.01) * 100
+		return success).size()
+	return snapped(float(successCount) / size, 0.01) * 100
 
 # Тут показывается элемент массива до которого мы имеем доступ в части
 # если -1 то часть недоступна

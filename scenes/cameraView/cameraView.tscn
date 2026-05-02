@@ -1,10 +1,12 @@
-[gd_scene load_steps=105 format=3 uid="uid://c4skm6x0vdrio"]
+[gd_scene load_steps=107 format=3 uid="uid://c4skm6x0vdrio"]
 
 [ext_resource type="Script" uid="uid://s7xxe373qflc" path="res://scenes/cameraView/Menu.gd" id="1_5area"]
 [ext_resource type="Texture2D" uid="uid://b5kwpoowsa3xl" path="res://assets/spritesheets/test-another-victory.png" id="1_wogd8"]
 [ext_resource type="Texture2D" uid="uid://uyw2fkq3olyd" path="res://assets/spritesheets/another-victory_vhs_spritesheet.png" id="2_fs7ng"]
 [ext_resource type="Script" uid="uid://4mp73h54tn4d" path="res://scenes/cameraView/animated_sprite_2d.gd" id="2_wogd8"]
 [ext_resource type="Script" uid="uid://0opjwjngtd13" path="res://scenes/cameraView/progress_bar.gd" id="5_rhjfp"]
+[ext_resource type="Script" uid="uid://bqw6qroru63sm" path="res://scenes/cameraView/clue.gd" id="6_iwm65"]
+[ext_resource type="Texture2D" uid="uid://1msynhp706xb" path="res://assets/pics/ui/clue_board.png" id="7_g7xkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs7ng"]
 atlas = ExtResource("1_wogd8")
@@ -707,12 +709,14 @@ animations = [{
 
 [node name="CameraView" type="Node2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+script = ExtResource("2_wogd8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 position = Vector2(974, 311)
 scale = Vector2(0.849594, 0.817073)
 sprite_frames = SubResource("SpriteFrames_gcf3q")
 animation = &"new_animation"
-script = ExtResource("2_wogd8")
 
 [node name="Menu" type="Control" parent="."]
 layout_mode = 3
@@ -735,7 +739,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" type="Control" parent="."]
+[node name="ProgressBar" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 838.0
@@ -744,7 +748,7 @@ offset_right = 1148.0
 offset_bottom = 173.0
 script = ExtResource("5_rhjfp")
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="ProgressBar" type="ProgressBar" parent="ProgressBar"]
 layout_mode = 0
 offset_left = -19.0
 offset_top = 19.0
@@ -752,7 +756,7 @@ offset_right = 303.0
 offset_bottom = 46.0
 show_percentage = false
 
-[node name="PercentLabel" type="Label" parent="Control"]
+[node name="PercentLabel" type="Label" parent="ProgressBar"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -763,3 +767,68 @@ offset_bottom = 7.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
+
+[node name="Clue" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1240.0
+offset_top = 594.0
+offset_right = 2240.0
+offset_bottom = 942.0
+script = ExtResource("6_iwm65")
+
+[node name="Board" type="TextureRect" parent="Clue"]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 342.0
+texture = ExtResource("7_g7xkj")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Clue/Board"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 42.0
+offset_right = 255.0
+offset_bottom = 190.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Если у марсианина гладкая голова, то в него плюют окружающие."
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Clue/Board"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 44.0
+offset_right = 489.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Если у марсианина гладкая голова, то в него плюют окружающие."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Clue/Board"]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 40.0
+offset_right = 724.0
+offset_bottom = 188.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Если у марсианина гладкая голова, то в него плюют окружающие."
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Clue/Board"]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 43.0
+offset_right = 964.0
+offset_bottom = 191.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+text = "Если у марсианина гладкая голова, то в него плюют окружающие."
+
+[node name="ToggleHandle" type="CheckButton" parent="Clue/Board"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 44.0
+grow_vertical = 2
+action_mode = 0

@@ -84,12 +84,3 @@ func _play_label_shake() -> void:
 	shake_tween.tween_property(label, "position", start_pos + Vector2(-2, 1), 0.04)
 	shake_tween.tween_property(label, "position", start_pos + Vector2(1, 0), 0.04)
 	shake_tween.tween_property(label, "position", start_pos, 0.04)
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		var v := bar.value
-		var new_val := v + 25
-		if new_val > 100:
-			set_percent(0)
-		else:
-			set_percent(new_val)

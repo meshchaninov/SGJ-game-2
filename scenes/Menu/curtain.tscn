@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7cvk11d4sarf"]
+
+[ext_resource type="Script" uid="uid://du14qibj4l3bw" path="res://scenes/Menu/curtain.gd" id="1_1nykv"]
+
+[node name="Curtain" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1nykv")
+
+[node name="ViewLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ViewLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -1029.0
+offset_right = -8.0
+offset_bottom = -1029.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="toggle" from="." to="." method="toggle_curtain"]

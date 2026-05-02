@@ -39,8 +39,6 @@ func _process(delta: float) -> void:
 
 
 func open(delta: float):
-	
-	
 	var yPos = menu.position[1]
 	var nextPos = menu.position[1] + delta*speed
 	if(nextPos > 0):

@@ -1,6 +1,9 @@
-extends Node
+extends Control
 
-@onready var curtain: ColorRect = $Curtain/ColorRect
+@onready var curtain: ColorRect = $ViewLayer/ColorRect
+@onready var layerScene: CanvasLayer = $ViewLayer
+@export var layer = 2
+@export var defaultOpen = false
 
 var is_closed := false
 var is_animating := false
@@ -9,17 +12,29 @@ var tween: Tween
 var hidden_y := 0.0
 var shown_y := 0.0
 
+signal toggle
+
+func emit_toggle():
+	toggle.emit()
+
 func _ready() -> void:
+	layerScene.layer = layer
 	hidden_y = curtain.position.y
 	shown_y = 0.0
+	if(defaultOpen):
+		is_closed = defaultOpen # пиздец
+		var xPos = curtain.position[0]
+		curtain.set_position(Vector2(xPos, shown_y))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		toggle_curtain()
 		get_viewport().set_input_as_handled()
-signal toggle
+		curtain.set
 
 func toggle_curtain() -> void:
+	print('toggle')
+	print(is_animating, ' ', is_closed)
 	if is_animating:
 		return
 

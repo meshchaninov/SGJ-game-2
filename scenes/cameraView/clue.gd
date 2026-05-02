@@ -3,6 +3,11 @@ extends Control
 @onready var board: Control = $Board
 @onready var toggle_handle: Control = $Board/ToggleHandle
 
+@onready var clue_1 = $Board/RichTextLabel
+@onready var clue_2 = $Board/RichTextLabel2
+@onready var clue_3 = $Board/RichTextLabel3
+@onready var clue_4 = $Board/RichTextLabel4
+
 var tween: Tween
 var clue_width := 240.0
 var current_clue_id := 1
@@ -30,6 +35,16 @@ func _ready() -> void:
 
 func set_current_clue_id(clue_id) -> void:
 	current_clue_id = clue_id
+
+func set_clue_text(clue_id, text) -> void:
+	if clue_id == 1:
+		clue_1.text = text
+	elif clue_id == 2:
+		clue_2.text = text
+	elif clue_id == 3:
+		clue_3.text = text
+	elif clue_id == 4:
+		clue_4.text = text
 	
 func _move_board(target_x: float, duration: float, ease_type: Tween.EaseType) -> void:
 	if tween:

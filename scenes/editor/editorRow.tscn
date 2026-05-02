@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2r7ui6f7jrwc"]
 
 [ext_resource type="Script" uid="uid://b4e7vw5fq2dtg" path="res://scenes/editor/editor_row.gd" id="1_s4m58"]
-[ext_resource type="PackedScene" uid="uid://b5jscgtpbl1u8" path="res://scenes/editor/Arrow.tscn" id="2_k56gi"]
+[ext_resource type="PackedScene" uid="uid://bynthmi644l32" path="res://scenes/editor/Arrow.tscn" id="2_k56gi"]
 
 [node name="EditorRow" type="Node2D"]
 script = ExtResource("1_s4m58")

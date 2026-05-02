@@ -172,7 +172,7 @@ static func generateNextClue():
 
 
 static var current_blob_state = [0, 0, 0, 0, 0]
-static var true_blob_state = [1, 1, 1, null, null]
+static var true_blob_state = [1, 1, 1, 1, 1]
 
 
 static func checkWinPercent():

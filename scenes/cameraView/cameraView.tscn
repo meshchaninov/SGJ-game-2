@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bqw6qroru63sm" path="res://scenes/cameraView/clue.gd" id="6_iwm65"]
 [ext_resource type="Texture2D" uid="uid://1msynhp706xb" path="res://assets/pics/ui/clue_board.png" id="7_g7xkj"]
 [ext_resource type="Texture2D" uid="uid://co1jfdqtid3kp" path="res://assets/spritesheets/briffing_vhs_spritesheet.png" id="7_lhkdf"]
-[ext_resource type="Script" path="res://scenes/cameraView/attempt.gd" id="8_3qs62"]
+[ext_resource type="Script" uid="uid://bc6q78g3bxej8" path="res://scenes/cameraView/attempt.gd" id="8_3qs62"]
 [ext_resource type="Texture2D" uid="uid://6aqeeqt0heyv" path="res://assets/pics/ui/arrow/attempt_life.png" id="8_rutji"]
 [ext_resource type="Texture2D" uid="uid://qi5o1bwcu36r" path="res://assets/spritesheets/default_vhs_spritesheet.png" id="8_xe4wp"]
 [ext_resource type="Texture2D" uid="uid://dk5q70i6b5fj5" path="res://assets/spritesheets/defeat_vhs_spritesheet.png" id="9_2t6e6"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://vw4jn8h7uofb" path="res://assets/pics/ui/check_button_press.png" id="23_2t6e6"]
 [ext_resource type="Texture2D" uid="uid://04a5vdyaduv" path="res://assets/pics/ui/check_button_hover.png" id="24_thpgb"]
 [ext_resource type="Script" uid="uid://4sjrsw3evir8" path="res://scenes/cameraView/camera_view.gd" id="25_camera"]
-[ext_resource type="Script" uid="uid://blm04r2h3hs86" path="res://scenes/cameraView/check.gd" id="26_check"]
+[ext_resource type="Script" uid="uid://ds5ku0nps84cb" path="res://scenes/cameraView/check.gd" id="26_check"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a6f4"]
 atlas = ExtResource("2_rutji")
@@ -5667,6 +5667,12 @@ offset_bottom = -1029.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
 
 [node name="ProgressBar" type="Control" parent="."]
 layout_mode = 3

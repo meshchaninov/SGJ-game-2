@@ -1,8 +1,8 @@
 extends Node
 
 @onready var curtain: ColorRect = $Curtain/ColorRect
-@onready var menu_music: AudioStreamPlayer = $MenuMusic
-@onready var game_music: AudioStreamPlayer = $GameMusic
+@onready var menu_music: AudioStreamPlayer = $"../MenuMusic"
+@onready var game_music: AudioStreamPlayer = $"../GameMusic"
 
 var is_closed := true
 var is_animating := false
@@ -14,10 +14,14 @@ var shown_y := 0.0
 func _ready() -> void:
 	hidden_y = curtain.position.y
 	shown_y = 0.0
+	print("Menu ready. menu_music: ", menu_music, " game_music: ", game_music)
 	if menu_music and game_music:
 		menu_music.stream = preload("res://assets/audio/menu.mp3")
 		game_music.stream = preload("res://assets/audio/game.mp3")
 		game_music.play()
+		print("Game music started")
+	else:
+		print("Audio nodes not found!")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

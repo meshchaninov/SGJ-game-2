@@ -46,20 +46,19 @@ def extract_frames_from_gif(gif_path: str) -> list[Image.Image]:
     return frames
 
 
-def apply_vhs_effect(frame: Image.Image, noise_intensity: float = 0.03, vignette_strength: float = 0.55) -> Image.Image:
-    """Apply VHS camera effect to a frame."""
+def apply_vhs_effect(frame: Image.Image, noise_intensity: float = 0.008, vignette_strength: float = 0.15) -> Image.Image:
+    """Apply very subtle VHS camera effect to a frame."""
     w, h = frame.size
     frame = frame.convert("RGBA")
 
     # --- Chromatic aberration (RGB shift) ---
     r, g, b, a = frame.split()
-    shift = 2
+    shift = 1
 
     r_shifted = Image.new("L", (w, h), 0)
     g_shifted = Image.new("L", (w, h), 0)
     b_shifted = Image.new("L", (w, h), 0)
 
-    # Shift red left, blue right
     for y in range(h):
         for x in range(w):
             rx = max(0, min(w - 1, x - shift))
@@ -72,27 +71,27 @@ def apply_vhs_effect(frame: Image.Image, noise_intensity: float = 0.03, vignette
 
     rgb = Image.merge("RGB", [r_shifted, g_shifted, b_shifted])
 
-    # --- Slight blur ---
-    rgb = rgb.filter(ImageFilter.GaussianBlur(radius=0.3))
+    # --- Subtle blur ---
+    rgb = rgb.filter(ImageFilter.GaussianBlur(radius=0.2))
 
     # --- Scanlines ---
+    line_spacing = max(1, h // 100)
     scanlines = Image.new("RGB", (w, h), (0, 0, 0))
-    for y in range(0, h, 2):
+    for y in range(0, h, line_spacing):
         for x in range(w):
             pixel = rgb.getpixel((x, y))
             scanlines.putpixel((x, y), (
-                int(pixel[0] * 0.7),
-                int(pixel[1] * 0.7),
-                int(pixel[2] * 0.7),
+                int(pixel[0] * 0.95),
+                int(pixel[1] * 0.95),
+                int(pixel[2] * 0.95),
             ))
 
-    # --- Color grading: desaturate + slight cyan tint ---
+    # --- Color grading: minimal desaturation + very subtle cyan tint ---
     enhancer = ImageEnhance.Color(scanlines)
-    scanlines = enhancer.enhance(0.75)
+    scanlines = enhancer.enhance(0.97)
 
-    # Slight cyan/red tint (VHS look)
     tint = Image.new("RGB", (w, h), (10, 230, 255))
-    scanlines = Image.blend(scanlines, tint, 0.04)
+    scanlines = Image.blend(scanlines, tint, 0.015)
 
     # --- Noise / static ---
     noise = Image.new("RGB", (w, h))
@@ -112,7 +111,7 @@ def apply_vhs_effect(frame: Image.Image, noise_intensity: float = 0.03, vignette
             src_x = max(0, min(w - 1, x + offset))
             jittered.putpixel((x, y), noise.getpixel((src_x, y)))
 
-    # --- Vignette (slight darkening at edges) ---
+    # --- Vignette (very subtle darkening at edges) ---
     vignette = Image.new("RGB", (w, h))
     cx, cy = w / 2, h / 2
     max_dist = math.sqrt(cx ** 2 + cy ** 2)

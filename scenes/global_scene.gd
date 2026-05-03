@@ -2,6 +2,7 @@ extends Node2D
 class_name GlobalScene
 
 static var lives = 10
+static var current_level = 3
 
 static var goodClueActions = [
 	'то на него плюют окружающие',

@@ -5,6 +5,7 @@ extends Node2D
 @onready var attempt: Control = $Attempt
 @onready var check: Control = $Check
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var next_level: Control = $NextLevel
 
 func _ready() -> void:
 	clue.toggle_pressed.connect(_on_clue_toggle_pressed)
@@ -33,3 +34,4 @@ func _handle_check() -> void:
 		sprite.play_temp_animation("normal")
 	elif percent == 100:
 		sprite.play_temp_animation("good")
+		next_level.check_and_show_button()

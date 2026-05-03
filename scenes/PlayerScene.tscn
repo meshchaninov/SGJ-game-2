@@ -1,4 +1,4 @@
-[gd_scene load_steps=816 format=3 uid="uid://hxantjs83tlu"]
+[gd_scene load_steps=819 format=3 uid="uid://hxantjs83tlu"]
 
 [ext_resource type="Texture2D" uid="uid://t1q8gugefdry" path="res://assets/pics/backMain.png" id="1_3lb1s"]
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4skm6x0vdrio" path="res://scenes/cameraView/cameraView.tscn" id="2_yxm6s"]
 [ext_resource type="Texture2D" uid="uid://bh8cb1ykk7s7h" path="res://assets/pics/window.png" id="5_b4xdg"]
 [ext_resource type="Script" uid="uid://nd1chn71rtyp" path="res://scenes/defeat_animation.gd" id="8_fjmkd"]
+[ext_resource type="Script" uid="uid://bd8p87numa44d" path="res://scenes/Menu/defeat_display.gd" id="8_hovhi"]
 [ext_resource type="Texture2D" uid="uid://dokdajai218b8" path="res://assets/spritesheets/0_p_vhs_spritesheet.png" id="9_fjmkd"]
 [ext_resource type="Texture2D" uid="uid://xpdv7g5qbjf7" path="res://assets/spritesheets/0_p2_vhs_spritesheet.png" id="10_cj2ja"]
 [ext_resource type="Texture2D" uid="uid://bx7qh20ma02ud" path="res://assets/spritesheets/100_p_vhs_spritesheet.png" id="11_hovhi"]
@@ -24,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://cp4v4em0hcwfp" path="res://assets/spritesheets/idle5_vhs_spritesheet.png" id="21_x2o8l"]
 [ext_resource type="Texture2D" uid="uid://bfqil6cqjxxkx" path="res://assets/spritesheets/win_vhs_spritesheet.png" id="22_vcsic"]
 [ext_resource type="Texture2D" uid="uid://be4eloptpmwx7" path="res://assets/pics/button_default.png" id="23_fjmkd"]
+[ext_resource type="Script" uid="uid://cjybroixrawr3" path="res://scenes/Menu/win_display.gd" id="26_iqkjt"]
+[ext_resource type="Script" uid="uid://dqdcgy80qswv5" path="res://scenes/Menu/load_level.gd" id="27_j8m8c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a6f4"]
 atlas = ExtResource("9_fjmkd")
@@ -5781,6 +5784,7 @@ texture = ExtResource("5_b4xdg")
 
 [node name="Defeat" parent="." instance=ExtResource("1_vdp4a")]
 layer = 35
+script = ExtResource("8_hovhi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Defeat/ColorRect" index="0"]
 position = Vector2(0, 1024)
@@ -5799,9 +5803,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.5
+offset_left = -295.5
 offset_top = 116.0
-offset_right = 200.5
+offset_right = 295.5
 offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -5841,6 +5845,74 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
 text = "Начать Заново"
 
+[node name="Win" parent="." instance=ExtResource("1_vdp4a")]
+layer = 35
+script = ExtResource("26_iqkjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="Win/ColorRect" index="0"]
+position = Vector2(0, 1024)
+script = ExtResource("8_fjmkd")
+
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="Win/ColorRect/Sprite2D"]
+position = Vector2(650.995, -699.101)
+scale = Vector2(0.519432, 0.488607)
+sprite_frames = SubResource("SpriteFrames_r7pe6")
+animation = &"win"
+
+[node name="Label" type="Label" parent="Win/ColorRect" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.5
+offset_top = 116.0
+offset_right = 295.5
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Поздравляю!"
+
+[node name="Window" type="Sprite2D" parent="Win/ColorRect" index="2"]
+position = Vector2(652.08, 325.68)
+scale = Vector2(0.394076, 0.377537)
+texture = ExtResource("5_b4xdg")
+
+[node name="NewGameButton" type="TextureButton" parent="Win/ColorRect" index="3"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 753.0
+offset_right = 1766.0
+offset_bottom = 1153.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("23_fjmkd")
+script = ExtResource("11_newgame")
+
+[node name="Label" type="Label" parent="Win/ColorRect/NewGameButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.5
+offset_top = -20.0
+offset_right = 289.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Начать Заново"
+
+[node name="LoadLevel" parent="." instance=ExtResource("1_vdp4a")]
+layer = 35
+visible = false
+script = ExtResource("27_j8m8c")
+
 [connection signal="pressed" from="MainMenu/ColorRect/Play" to="MainMenu" method="emit_toggle"]
 [connection signal="pressed" from="MainMenu/ColorRect/Briefing" to="Briefing" method="emit_toggle"]
 [connection signal="pressed" from="Briefing/ColorRect/Skip" to="Briefing/ColorRect/Skip" method="skip"]
@@ -5849,3 +5921,5 @@ text = "Начать Заново"
 [editable path="Briefing"]
 [editable path="CanvasLayerEditor/Editor"]
 [editable path="Defeat"]
+[editable path="Win"]
+[editable path="LoadLevel"]

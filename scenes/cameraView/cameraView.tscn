@@ -1,4 +1,4 @@
-[gd_scene load_steps=824 format=3 uid="uid://c4skm6x0vdrio"]
+[gd_scene load_steps=825 format=3 uid="uid://c4skm6x0vdrio"]
 
 [ext_resource type="Texture2D" uid="uid://dokdajai218b8" path="res://assets/spritesheets/0_p_vhs_spritesheet.png" id="2_rutji"]
 [ext_resource type="Script" uid="uid://4mp73h54tn4d" path="res://scenes/cameraView/animated_sprite_2d.gd" id="2_wogd8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://blbtkxf6estwj" path="res://assets/spritesheets/idle4_vhs_spritesheet.png" id="13_c4471"]
 [ext_resource type="Texture2D" uid="uid://cp4v4em0hcwfp" path="res://assets/spritesheets/idle5_vhs_spritesheet.png" id="14_vnsbl"]
 [ext_resource type="Texture2D" uid="uid://bfqil6cqjxxkx" path="res://assets/spritesheets/win_vhs_spritesheet.png" id="15_2a6f4"]
+[ext_resource type="Texture2D" uid="uid://bh8cb1ykk7s7h" path="res://assets/pics/window.png" id="18_5ixtc"]
 [ext_resource type="Texture2D" uid="uid://4ynsy88bp5bc" path="res://assets/pics/ui/check_button.png" id="22_xe4wp"]
 [ext_resource type="Texture2D" uid="uid://vw4jn8h7uofb" path="res://assets/pics/ui/check_button_press.png" id="23_2t6e6"]
 [ext_resource type="Texture2D" uid="uid://04a5vdyaduv" path="res://assets/pics/ui/check_button_hover.png" id="24_thpgb"]
@@ -5655,6 +5656,11 @@ animation = &"80_p"
 
 [node name="Voice" type="AudioStreamPlayer" parent="Sprite2D"]
 
+[node name="Window" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(984.5, 413.5)
+scale = Vector2(0.410577, 0.393269)
+texture = ExtResource("18_5ixtc")
+
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
@@ -5689,6 +5695,20 @@ offset_bottom = 7.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -2.0
+offset_top = 18.0
+offset_right = -19.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 13
+text = "Совпадение"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Clue" type="Control" parent="."]
 layout_mode = 3
@@ -5873,10 +5893,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = -21.0
-offset_right = 777.0
-offset_bottom = 298.0
+offset_left = 27.0
+offset_top = -8.0
+offset_right = 781.0
+offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.3, 0.3)
@@ -5915,7 +5935,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 75
-text = "Следущий уровень"
+text = "Дальше"
 horizontal_alignment = 1
 vertical_alignment = 1
 

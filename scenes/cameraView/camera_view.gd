@@ -26,7 +26,7 @@ func _handle_check() -> void:
 	
 	attempt.change_lives(GlobalStateScene.lives)
 	
-	if percent < 66:
+	if percent < 49:
 		sprite.play_temp_animation("bad")
 	elif percent < 80:
 		sprite.play_temp_animation("normal")

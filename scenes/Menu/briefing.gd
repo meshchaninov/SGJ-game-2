@@ -28,10 +28,6 @@ func _ready() -> void:
 	if voice:
 		voice.stream = preload("res://assets/audio/voices/briffing.wav")
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		toggle_curtain()
-		get_viewport().set_input_as_handled()
 
 func toggle_curtain() -> void:
 	if is_animating:

@@ -2,10 +2,24 @@
 
 cd /Users/nikita/Desktop/BOB
 
-OUTPUT_DIR="/Users/nikita/Desktop/BOB/export/web"
+GODOT="/Applications/godot.app/Contents/MacOS/godot"
+EXPORT_DIR="/Users/nikita/Desktop/BOB/export"
 
-mkdir -p "$OUTPUT_DIR"
+mkdir -p "$EXPORT_DIR"
 
-/Applications/godot.app/Contents/MacOS/godot --headless --export-release "Web" "$OUTPUT_DIR/index.html"
+echo "=== Exporting Web (Release) ==="
+$GODOT --headless --export-release "Web" "$EXPORT_DIR/index.html"
 
-echo "Exported to $OUTPUT_DIR"
+echo ""
+echo "=== Exporting Windows Desktop (Release) ==="
+$GODOT --headless --export-release "Windows Desktop" "$EXPORT_DIR/BOB.exe"
+
+echo ""
+echo "=== Exporting macOS (Release) ==="
+$GODOT --headless --export-release "macOS" "$EXPORT_DIR/BOB.zip"
+
+echo ""
+echo "=== Export complete ==="
+echo "Web: $EXPORT_DIR/index.html"
+echo "Windows: $EXPORT_DIR/BOB.exe"
+echo "macOS: $EXPORT_DIR/BOB.zip"

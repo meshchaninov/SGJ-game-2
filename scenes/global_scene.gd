@@ -4,6 +4,34 @@ class_name GlobalScene
 static var lives = 10
 static var current_level = 1
 
+static var alien_adjectives = [
+	"Звёздный",
+	"Квантовый",
+	"Туманностный",
+	"Хаотичный",
+	"Плазменный",
+	"Эфирный",
+	"Сингулярный",
+	"Гравитационный",
+	"Кристаллический",
+	"Биолюминесцентный"
+]
+
+static var alien_nouns = [
+	"Зорнак",
+	"Ксилириум",
+	"Вортексар",
+	"Небулон",
+	"Драксар",
+	"Иллирион",
+	"Ксенот",
+	"Астрил",
+	"Таргос",
+	"Мелтракс"
+]
+
+static var alien_name = ""
+
 static var goodClueActions = [
 	'то на него плюют окружающие',
 	'то ему запрещено петь песни',
@@ -203,16 +231,24 @@ static func shuffleTrueBlobState(lvl):
 	
 
 static func checkWinPercent():
-	var filteredTrueState = true_blob_state.filter(func(value):
-		return value != null)
-	var size = filteredTrueState.size()
-	
-	var index = 0
-	var successCount = current_blob_state.filter(func(value):
-		var success = value == true_blob_state[index]
-		index = index +1
-		return success).size()
-	return snapped(float(successCount) / size, 0.01) * 100
+	print("DEBUG checkWinPercent:")
+	print("  true_blob_state: ", true_blob_state)
+	print("  current_blob_state: ", current_blob_state)
+	var matchCount = 0
+	var totalCount = 0
+
+	for i in range(true_blob_state.size()):
+		if true_blob_state[i] == null:
+			continue
+		totalCount += 1
+		if current_blob_state[i] == true_blob_state[i]:
+			matchCount += 1
+
+	if totalCount == 0:
+		return 0.0
+	var result = snapped(float(matchCount) / totalCount, 0.01) * 100
+	print("  matchCount=", matchCount, " totalCount=", totalCount, " result=", result)
+	return result
 
 
 
@@ -237,7 +273,7 @@ static func set_current_blob_state_part(value: int, part_index: int) -> void:
 	
 	
 static func set_current_blob_state(newState: Array) -> void:
-	true_blob_state = newState
+	current_blob_state = newState
 
 func reset_current_blob_state(lvl) -> void:
 	for i in range(len(current_blob_state)):
@@ -254,6 +290,10 @@ static func reset_game() -> void:
 	current_level = 1
 	shuffleTrueBlobState(current_level)
 
+func shuffle_names() -> void:
+	var adj = alien_adjectives[rng.randi_range(0, alien_adjectives.size() - 1)]
+	var noun = alien_nouns[rng.randi_range(0, alien_nouns.size() - 1)]
+	alien_name = adj + " " + noun
 
 func next_level(just_reset=false) -> void:
 	var next = current_level + 1
@@ -261,6 +301,7 @@ func next_level(just_reset=false) -> void:
 		next = current_level
 	shuffleTrueBlobState(next)
 	reset_current_blob_state(next)
+	shuffle_names()
 	lives = 10
 
 	var root = get_tree().root
@@ -283,8 +324,11 @@ func next_level(just_reset=false) -> void:
 	var next_level_node = root.get_node_or_null("PlayerScene/CameraView/NextLevel")
 	if next_level_node:
 		next_level_node.hide_button()
+	var name_label = root.get_node_or_null("PlayerScene/Name")
+	if name_label:
+		name_label.text = alien_name
 
-	if current_level == 3:
+	if next == 4:
 		var win_node = root.get_node_or_null("PlayerScene/Win")
 		if win_node:
 			win_node.toggle_curtain()

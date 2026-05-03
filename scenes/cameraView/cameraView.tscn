@@ -1,4 +1,4 @@
-[gd_scene load_steps=823 format=3 uid="uid://c4skm6x0vdrio"]
+[gd_scene load_steps=824 format=3 uid="uid://c4skm6x0vdrio"]
 
 [ext_resource type="Texture2D" uid="uid://dokdajai218b8" path="res://assets/spritesheets/0_p_vhs_spritesheet.png" id="2_rutji"]
 [ext_resource type="Script" uid="uid://4mp73h54tn4d" path="res://scenes/cameraView/animated_sprite_2d.gd" id="2_wogd8"]
@@ -24,13 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://vw4jn8h7uofb" path="res://assets/pics/ui/check_button_press.png" id="23_2t6e6"]
 [ext_resource type="Texture2D" uid="uid://04a5vdyaduv" path="res://assets/pics/ui/check_button_hover.png" id="24_thpgb"]
 [ext_resource type="Script" uid="uid://4sjrsw3evir8" path="res://scenes/cameraView/camera_view.gd" id="25_camera"]
-[ext_resource type="Script" uid="uid://ds5ku0nps84cb" path="res://scenes/cameraView/check.gd" id="26_check"]
+[ext_resource type="Script" uid="uid://blm04r2h3hs86" path="res://scenes/cameraView/check.gd" id="26_check"]
 [ext_resource type="Script" uid="uid://csokj63kw5mrp" path="res://scenes/cameraView/level.gd" id="27_0iix4"]
 [ext_resource type="Texture2D" uid="uid://be4eloptpmwx7" path="res://assets/pics/button_default.png" id="28_c4471"]
 [ext_resource type="Script" uid="uid://xmlcwc7n6l0j" path="res://scenes/cameraView/next_level.gd" id="28_nextlevel"]
 [ext_resource type="Texture2D" uid="uid://dfkp5btffho6q" path="res://assets/pics/button_default_pressed.png" id="29_515sb"]
 [ext_resource type="Texture2D" uid="uid://dlv3p3pfdjwdb" path="res://assets/pics/button_default_hover.png" id="30_5an4q"]
 [ext_resource type="Script" uid="uid://y2lnkvwqwsig" path="res://scenes/cameraView/menu_button.gd" id="31_menubtn"]
+[ext_resource type="Script" uid="uid://s7xxe373qflc" path="res://scenes/cameraView/Menu.gd" id="32_menu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a6f4"]
 atlas = ExtResource("2_rutji")
@@ -5638,6 +5639,9 @@ animations = [{
 [node name="CameraView" type="Node2D"]
 script = ExtResource("25_camera")
 
+[node name="Menu" type="Node" parent="."]
+script = ExtResource("32_menu")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 script = ExtResource("2_wogd8")
 
@@ -5884,8 +5888,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 861.0
 offset_top = 794.0
-offset_right = 1077.0
-offset_bottom = 862.0
+offset_right = 1127.0
+offset_bottom = 878.0
 script = ExtResource("28_nextlevel")
 
 [node name="NextLevelButton" type="TextureButton" parent="NextLevel"]

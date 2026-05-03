@@ -231,16 +231,23 @@ static func set_current_blob_state_part(value: int, part_index: int) -> void:
 static func set_current_blob_state(newState: Array) -> void:
 	true_blob_state = newState
 
+
+
 static func reset_game() -> void:
 	lives = 10
 	current_level = 1
 	shuffleTrueBlobState()
 
+
 func next_level() -> void:
-	get_node("/root/PlayerScene/CameraView/Level").change_lvl(current_level + 1)
-	lives = 10
-	get_node("/root/PlayerScene/CameraView/Attempt").change_lives(lives)
 	shuffleTrueBlobState()
+	lives = 10
+	get_node("/root/PlayerScene/CameraView/Level").change_lvl(current_level + 1)
+	get_node("/root/PlayerScene/CameraView/Attempt").change_lives(lives)
+	get_node("/root/PlayerScene/CameraView/ProgressBar").set_percent(0)
+	get_node("/root/PlayerScene/CanvasLayerEditor/Editor").updateTextureParts()
+	get_node("/root/PlayerScene/CameraView/NextLevel").hide_button()
+	
 	if current_level == 3:
 		get_node("/root/PlayerScene/Win").toggle_curtain()
 	else:

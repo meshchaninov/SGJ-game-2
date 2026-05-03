@@ -239,7 +239,15 @@ static func set_current_blob_state_part(value: int, part_index: int) -> void:
 static func set_current_blob_state(newState: Array) -> void:
 	true_blob_state = newState
 
-
+func reset_current_blob_state(lvl) -> void:
+	for i in range(len(current_blob_state)):
+		current_blob_state[i] = 0
+	if lvl == 1:
+		current_blob_state[-1] = null
+		current_blob_state[-2] = null
+	elif lvl == 2:
+		current_blob_state[-1] = null
+	
 
 static func reset_game() -> void:
 	lives = 10
@@ -252,6 +260,7 @@ func next_level(just_reset=false) -> void:
 	if just_reset:
 		next = current_level
 	shuffleTrueBlobState(next)
+	reset_current_blob_state(next)
 	lives = 10
 
 	var root = get_tree().root

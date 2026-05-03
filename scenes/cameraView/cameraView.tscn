@@ -5653,6 +5653,8 @@ animation = &"80_p"
 
 [node name="IdleTimer" type="Timer" parent="Sprite2D"]
 
+[node name="Voice" type="AudioStreamPlayer" parent="Sprite2D"]
+
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 

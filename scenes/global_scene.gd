@@ -214,3 +214,7 @@ static func set_current_blob_state_part(value: int, part_index: int) -> void:
 	
 static func set_current_blob_state(newState: Array) -> void:
 	true_blob_state = newState
+
+static func reset_game() -> void:
+	lives = 10
+	

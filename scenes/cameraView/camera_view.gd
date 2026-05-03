@@ -23,6 +23,10 @@ func _handle_check() -> void:
 	GlobalStateScene.lives -= 1
 	attempt.change_lives(GlobalStateScene.lives)
 
+	if GlobalStateScene.lives == 0:
+		get_node("/root/PlayerScene/Defeat").toggle_curtain()
+		return
+
 	if percent < 66:
 		sprite.play_temp_animation("bad")
 	elif percent < 80:

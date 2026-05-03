@@ -1,6 +1,6 @@
 extends TextureButton
 
-@onready var curtain: Briefing = $"../.."
+@onready var curtain:  = $"../.."
 
 func skip():
 	# тут заглушаем аудио

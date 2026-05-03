@@ -5820,6 +5820,9 @@ text = "Слушайте сюда, салага, это вам не Сколко
 position = Vector2(101, 198)
 scale = Vector2(1.1, 1.1)
 
+[node name="EditorHead" parent="CanvasLayerEditor/Editor/blobAndParts" index="6"]
+part_index = null
+
 [node name="Window" type="Sprite2D" parent="CanvasLayerEditor/Editor"]
 position = Vector2(284.4, 204.4)
 scale = Vector2(0.594615, 0.431538)
@@ -5888,7 +5891,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 80
-text = "Начать Заново"
+text = "Повтор уровня"
 
 [node name="Voice" type="AudioStreamPlayer" parent="Defeat"]
 

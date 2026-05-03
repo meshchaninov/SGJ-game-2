@@ -18,6 +18,7 @@ func play_game_music() -> void:
 	if game_started:
 		return
 	game_started = true
+	GlobalScene.reset_game()
 	if menu_music and game_music:
 		game_music.play()
 		menu_music.stop()

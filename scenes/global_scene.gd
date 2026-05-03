@@ -171,9 +171,14 @@ static func generateNextClue():
 	var randStateValue =  partClueArray[randStateIndex]
 	partCluesArray.push_back(randStateValue)
 
+# Тут показывается элемент массива до которого мы имеем доступ в части
+# если -1 то часть недоступна
+# бля, ставим от 0 до 4 или null, -- это доступные индексы
+const MAX_FOR_MAX_PARTS = 4
+static var max_parts = [MAX_FOR_MAX_PARTS, MAX_FOR_MAX_PARTS, MAX_FOR_MAX_PARTS , null , null]
 
-static var current_blob_state = [0, 0, 0, 0, 0]
-static var true_blob_state = [1, 1, 1, 1, 1]
+static var current_blob_state = [0, 0, 0, null, null]
+static var true_blob_state = [1, 1, 1, null, null]
 
 static func resetBlobState():
 	for i in range(len(current_blob_state)):
@@ -181,14 +186,20 @@ static func resetBlobState():
 			continue
 		current_blob_state[i] = 0
 
-static func shuffleTrueBlobState():
+static func shuffleTrueBlobState(lvl):
+	for i in range(len(max_parts)):
+		max_parts[i] = MAX_FOR_MAX_PARTS
+	if lvl == 1:
+		max_parts[-1] = null
+		max_parts[-2] = null
+	elif lvl == 2:
+		max_parts[-1] = null
 	for i in range(len(true_blob_state)):
-		true_blob_state[i] = 1
-	#if current_level == 1:
-		#true_blob_state[-1] = null
-		#true_blob_state[-2] = null
-	#elif current_level == 2:
-		#true_blob_state[-1] = null
+		if max_parts[i] == null:
+			true_blob_state[i] = null
+			continue
+		true_blob_state[i] = rng.randi_range(0, max_parts[i])
+	print("Current TRUE BLOB STATE: ",true_blob_state)
 	
 
 static func checkWinPercent():
@@ -203,10 +214,7 @@ static func checkWinPercent():
 		return success).size()
 	return snapped(float(successCount) / size, 0.01) * 100
 
-# Тут показывается элемент массива до которого мы имеем доступ в части
-# если -1 то часть недоступна
-# бля, ставим от 0 до 4 или -1, -- это доступные индексы
-static var max_parts = [4, 4, 4 , 4 , 4]
+
 
 # тут прост для удобство адреса всех пикч
 #static var PARTS = {
@@ -236,21 +244,44 @@ static func set_current_blob_state(newState: Array) -> void:
 static func reset_game() -> void:
 	lives = 10
 	current_level = 1
-	shuffleTrueBlobState()
+	shuffleTrueBlobState(current_level)
 
 
-func next_level() -> void:
-	shuffleTrueBlobState()
+func next_level(just_reset=false) -> void:
+	var next = current_level + 1
+	if just_reset:
+		next = current_level
+	shuffleTrueBlobState(next)
 	lives = 10
-	get_node("/root/PlayerScene/CameraView/Level").change_lvl(current_level + 1)
-	get_node("/root/PlayerScene/CameraView/Attempt").change_lives(lives)
-	get_node("/root/PlayerScene/CameraView/ProgressBar").set_percent(0)
-	get_node("/root/PlayerScene/CanvasLayerEditor/Editor").updateTextureParts()
-	get_node("/root/PlayerScene/CameraView/NextLevel").hide_button()
-	
+
+	var root = get_tree().root
+	var camera_view = root.get_node_or_null("PlayerScene/CameraView")
+	print("CameraView: ", camera_view)
+	if camera_view:
+		var level_node = camera_view.get_node_or_null("Level")
+		print("Level node: ", level_node)
+		if level_node:
+			level_node.change_lvl(next)
+	var attempt_node = root.get_node_or_null("PlayerScene/CameraView/Attempt")
+	if attempt_node:
+		attempt_node.change_lives(lives)
+	var progress_node = root.get_node_or_null("PlayerScene/CameraView/ProgressBar")
+	if progress_node:
+		progress_node.set_percent(0)
+	var editor_node = root.get_node_or_null("PlayerScene/CanvasLayerEditor/Editor")
+	if editor_node:
+		editor_node.updateTextureParts()
+	var next_level_node = root.get_node_or_null("PlayerScene/CameraView/NextLevel")
+	if next_level_node:
+		next_level_node.hide_button()
+
 	if current_level == 3:
-		get_node("/root/PlayerScene/Win").toggle_curtain()
+		var win_node = root.get_node_or_null("PlayerScene/Win")
+		if win_node:
+			win_node.toggle_curtain()
 	else:
-		get_node("/root/PlayerScene/LoadLevel").flash_curtain()
-		
-	current_level += 1
+		var load_level_node = root.get_node_or_null("PlayerScene/LoadLevel")
+		if load_level_node:
+			load_level_node.flash_curtain()
+
+	current_level = next

@@ -4,11 +4,11 @@ func updateVisibleParts():
 	GlobalScene.true_blob_state.filter
 
 func updateTextureParts():
-	$blobAndParts/EditorHead.update_texture()
-	$blobAndParts/EditorEye.update_texture()
-	$blobAndParts/EditorMouth.update_texture()
-	$blobAndParts/EditorHands.update_texture()
-	$blobAndParts/EditorCloth.update_texture()
+	$blobAndParts/EditorHead.refreshRow()
+	$blobAndParts/EditorEye.refreshRow()
+	$blobAndParts/EditorMouth.refreshRow()
+	$blobAndParts/EditorHands.refreshRow()
+	$blobAndParts/EditorCloth.refreshRow()
 	
 
 #func _ready() -> void:

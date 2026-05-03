@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 # Обнуляет и показывает/скрывает часть при обновлении true state
 func refreshRow():
-	var toHide = get_max_index() == -1
+	var toHide = get_max_index() == null
 	if(toHide):
 		GlobalScene.set_current_blob_state_part(0, part_index)
 	update_texture()
@@ -32,10 +32,10 @@ func refreshRow():
 	
 
 func update_texture():
-	if(get_max_index() == -1):
+	if(get_max_index() == null):
 		GlobalScene.set_current_blob_state_part(0, part_index)
-	var texture: Texture2D
 	var currentIndex  = get_current_index()
+	var texture: Texture2D
 	match pathName:
 		'head':
 			texture = GlobalScene.getPartHead(currentIndex)
@@ -52,10 +52,10 @@ func update_texture():
 	print(texture)
 	sprite.texture = texture
 	
-func get_max_index() -> int: 
+func get_max_index(): 
 	return GlobalStateScene.max_parts[part_index]
 	
-func get_current_index() -> int: 
+func get_current_index(): 
 	return GlobalStateScene.current_blob_state[part_index]
 
 func getTexture(str: String) -> Texture2D:

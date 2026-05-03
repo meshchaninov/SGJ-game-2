@@ -77,3 +77,7 @@ func _play_voice(animation_key: String) -> void:
 		voice.stop()
 		voice.stream = load(str("res://assets/audio/voices/", random_voice, ".wav"))
 		voice.play()
+
+func stop_voice() -> void:
+	if voice:
+		voice.stop()

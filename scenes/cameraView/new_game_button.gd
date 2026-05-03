@@ -4,5 +4,8 @@ func _ready() -> void:
 	pressed.connect(_on_pressed)
 
 func _on_pressed() -> void:
-	get_tree().reload_current_scene()
-	GlobalStateScene.reset_game()
+	GlobalStateScene.next_level(true)
+	var root = get_tree().root
+	var defeat = root.get_node_or_null("PlayerScene/Defeat")
+	if defeat:
+		defeat.toggle_curtain()

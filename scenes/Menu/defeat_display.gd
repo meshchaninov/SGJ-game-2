@@ -55,6 +55,7 @@ func toggle_curtain() -> void:
 		is_closed = true
 		if voice:
 			voice.play()
+		get_node("/root/PlayerScene/CameraView/Sprite2D").stop_voice()
 
 func _on_tween_finished() -> void:
 	is_animating = false

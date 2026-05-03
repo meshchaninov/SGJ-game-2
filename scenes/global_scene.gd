@@ -2,7 +2,7 @@ extends Node2D
 class_name GlobalScene
 
 static var lives = 10
-static var current_level = 3
+static var current_level = 1
 
 static var goodClueActions = [
 	'то на него плюют окружающие',
@@ -175,6 +175,21 @@ static func generateNextClue():
 static var current_blob_state = [0, 0, 0, 0, 0]
 static var true_blob_state = [1, 1, 1, 1, 1]
 
+static func resetBlobState():
+	for i in range(len(current_blob_state)):
+		if current_blob_state[i] == null:
+			continue
+		current_blob_state[i] = 0
+
+static func shuffleTrueBlobState():
+	for i in range(len(true_blob_state)):
+		true_blob_state[i] = 1
+	#if current_level == 1:
+		#true_blob_state[-1] = null
+		#true_blob_state[-2] = null
+	#elif current_level == 2:
+		#true_blob_state[-1] = null
+	
 
 static func checkWinPercent():
 	var filteredTrueState = true_blob_state.filter(func(value):
@@ -218,4 +233,17 @@ static func set_current_blob_state(newState: Array) -> void:
 
 static func reset_game() -> void:
 	lives = 10
-	
+	current_level = 1
+	shuffleTrueBlobState()
+
+func next_level() -> void:
+	get_node("/root/PlayerScene/CameraView/Level").change_lvl(current_level + 1)
+	lives = 10
+	get_node("/root/PlayerScene/CameraView/Attempt").change_lives(lives)
+	shuffleTrueBlobState()
+	if current_level == 3:
+		get_node("/root/PlayerScene/Win").toggle_curtain()
+	else:
+		get_node("/root/PlayerScene/LoadLevel").flash_curtain()
+		
+	current_level += 1

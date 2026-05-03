@@ -1,8 +1,8 @@
-[gd_scene load_steps=819 format=3 uid="uid://hxantjs83tlu"]
+[gd_scene load_steps=823 format=3 uid="uid://hxantjs83tlu"]
 
 [ext_resource type="Texture2D" uid="uid://t1q8gugefdry" path="res://assets/pics/backMain.png" id="1_3lb1s"]
 [ext_resource type="PackedScene" uid="uid://cvwvtoyxl2fey" path="res://scenes/editor/editor.tscn" id="1_f302p"]
-[ext_resource type="Script" path="res://scenes/player_scene.gd" id="1_qxfha"]
+[ext_resource type="Script" uid="uid://c5w0rqt5rgrvi" path="res://scenes/player_scene.gd" id="1_qxfha"]
 [ext_resource type="PackedScene" uid="uid://b7cvk11d4sarf" path="res://scenes/Menu/curtain.tscn" id="1_vdp4a"]
 [ext_resource type="Script" path="res://scenes/skip.gd" id="2_4kqly"]
 [ext_resource type="PackedScene" uid="uid://c4skm6x0vdrio" path="res://scenes/cameraView/cameraView.tscn" id="2_yxm6s"]
@@ -27,6 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://be4eloptpmwx7" path="res://assets/pics/button_default.png" id="23_fjmkd"]
 [ext_resource type="Script" uid="uid://cjybroixrawr3" path="res://scenes/Menu/win_display.gd" id="26_iqkjt"]
 [ext_resource type="Script" uid="uid://dqdcgy80qswv5" path="res://scenes/Menu/load_level.gd" id="27_j8m8c"]
+[ext_resource type="Script" uid="uid://d0nnlo4itsjx6" path="res://scenes/menu_button.gd" id="28_6yt30"]
+[ext_resource type="Texture2D" uid="uid://b0shj7c2yhxnq" path="res://assets/pics/menu.png" id="29_86dxk"]
+[ext_resource type="Texture2D" uid="uid://ctw8182nvuyjd" path="res://assets/pics/menu_push.png" id="30_u8por"]
+[ext_resource type="Texture2D" uid="uid://mi8nqys5glcy" path="res://assets/pics/menu_hover.png" id="31_k7woh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2a6f4"]
 atlas = ExtResource("9_fjmkd")
@@ -5910,8 +5914,26 @@ text = "Начать Заново"
 
 [node name="LoadLevel" parent="." instance=ExtResource("1_vdp4a")]
 layer = 35
-visible = false
 script = ExtResource("27_j8m8c")
+defaultOpen = true
+
+[node name="MenuButton" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 55.0
+offset_bottom = 55.0
+
+[node name="TextureButton" type="TextureButton" parent="MenuButton"]
+layout_mode = 1
+offset_left = 21.0
+offset_top = 35.0
+offset_right = 426.0
+offset_bottom = 431.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("29_86dxk")
+texture_pressed = ExtResource("30_u8por")
+texture_hover = ExtResource("31_k7woh")
+script = ExtResource("28_6yt30")
 
 [connection signal="pressed" from="MainMenu/ColorRect/Play" to="MainMenu" method="emit_toggle"]
 [connection signal="pressed" from="MainMenu/ColorRect/Briefing" to="Briefing" method="emit_toggle"]

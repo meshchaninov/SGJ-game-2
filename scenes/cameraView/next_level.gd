@@ -7,7 +7,7 @@ func _ready() -> void:
 	button.pressed.connect(_on_button_pressed)
 
 func _on_button_pressed() -> void:
-	get_node("/root/PlayerScene/Win").toggle_curtain()
+	GlobalStateScene.next_level()
 
 func show_button() -> void:
 	button.show()

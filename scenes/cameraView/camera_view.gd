@@ -32,6 +32,6 @@ func _handle_check() -> void:
 		sprite.play_temp_animation("bad")
 	elif percent < 80:
 		sprite.play_temp_animation("normal")
-	elif percent == 100:
+	elif percent <= 100:
 		sprite.play_temp_animation("good")
 		next_level.check_and_show_button()

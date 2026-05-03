@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var sprite = $ColorRect/Sprite2D/AnimationSprite2D
 @onready var curtain: TextureRect = $ColorRect
+@onready var voice: AudioStreamPlayer = $Voice
 
 
 @export var defaultOpen = false
@@ -17,11 +18,13 @@ signal toggle
 
 func emit_toggle():
 	toggle.emit()
-	
+
 func _ready() -> void:
 	sprite.play()
 	hidden_y = curtain.position.y
 	shown_y = 0.0
+	if voice:
+		voice.stream = preload("res://assets/audio/voices/defeat.wav")
 
 func toggle_curtain() -> void:
 	if is_animating:
@@ -40,6 +43,8 @@ func toggle_curtain() -> void:
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_IN)
 		is_closed = false
+		if voice:
+			voice.stop()
 	else:
 		tween.tween_property(curtain, "position:y", 0.0, 0.36) \
 			.set_trans(Tween.TRANS_CUBIC) \
@@ -48,6 +53,8 @@ func toggle_curtain() -> void:
 			.set_trans(Tween.TRANS_BACK) \
 			.set_ease(Tween.EASE_OUT)
 		is_closed = true
+		if voice:
+			voice.play()
 
 func _on_tween_finished() -> void:
 	is_animating = false

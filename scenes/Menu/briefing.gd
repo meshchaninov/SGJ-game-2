@@ -1,9 +1,8 @@
 extends CanvasLayer
+class_name Briefing
 
-@onready var sprite = $ColorRect/Sprite2D/AnimationSprite2D
 @onready var curtain: TextureRect = $ColorRect
 @onready var voice: AudioStreamPlayer = $Voice
-
 
 @export var defaultOpen = false
 
@@ -20,11 +19,19 @@ func emit_toggle():
 	toggle.emit()
 
 func _ready() -> void:
-	sprite.play()
 	hidden_y = curtain.position.y
 	shown_y = 0.0
+	if(defaultOpen):
+		is_closed = defaultOpen # пиздец
+		var xPos = curtain.position[0]
+		curtain.set_position(Vector2(xPos, shown_y))
 	if voice:
-		voice.stream = preload("res://assets/audio/voices/win.wav")
+		voice.stream = preload("res://assets/audio/voices/briffing.wav")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		toggle_curtain()
+		get_viewport().set_input_as_handled()
 
 func toggle_curtain() -> void:
 	if is_animating:
